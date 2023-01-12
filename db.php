@@ -30,3 +30,20 @@ $schema->create($tabela, function($table){
   $table->date('dt_criacao');
 
 });
+
+// Preenche a tabela
+$db->table($tabela)->insert([
+  'titulo'=>'Smartphone Motorola Moto G6 32GB Dual Chip',
+  'descricao'=>'Android Oreo - 8.0 Tela 5.7" Octa-Core 1.8 GHz Câmera 12 + 5MP (Dual Traseira) - Índigo',
+  'preco'=> 899.00,
+  'fabricante'=>'Motorola',
+  'dt_criacao'=>'2023-01-12'
+]);
+
+$db->table($tabela)->insert([
+  'titulo'=>'iPhone X Cinza Espacial 64GB',
+  'descricao'=>'Tela 5.8" IOS 12 4G Wi-Fi Câmera 12MP - Apple',
+  'preco'=> 4999.00,
+  'fabricante'=>'Apple',
+  'dt_criacao'=>'2023-01-10'
+]);
