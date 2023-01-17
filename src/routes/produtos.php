@@ -21,22 +21,42 @@ $app->group('/api/v1', function(){
   });
 
   // Adiciona um produto
-  $this->post('/produtos/adiciona', function($request, $response){
+	$this->post('/produtos/adiciona', function($request, $response){
+		
+		$dados = $request->getParsedBody();
 
-    $dados = $request->getParseBody();
-    $produto = Produto::create($dados);
+		//Validar
+
+		$produto = Produto::create( $dados );
+		return $response->withJson( $produto );
+
+	});
+
+  // Recupera produto para um determinado ID
+  $this->get('/produtos/lista/{id}', function($request, $response, $args){
+
+    
+    $produto = Produto::findorFail($args['id']);
 
     return $response->withJson($produto);
 
   });
 
-  // Recupera produto para um determinado ID
-  $this->get('/produtos/lista/{id}', function($request, $response, $args){
+  // Atualiza produto para um determinado ID
+	$this->put('/produtos/atualiza/{id}', function($request, $response, $args){
+		
+		$dados = $request->getParsedBody();
+		$produto = Produto::findOrFail( $args['id'] );
+		$produto->update( $dados );
+		return $response->withJson( $produto );
 
-    var_dump($args);
+	});
 
+  // Remove produto para um determinado ID
+  $this->get('/produtos/remove/{id}', function($request, $response, $args){
+    
     $produto = Produto::findorFail($args['id']);
-
+    $produto->delete();
     return $response->withJson($produto);
 
   });
