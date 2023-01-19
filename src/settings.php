@@ -26,6 +26,8 @@ return [
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
-        ]
+        ],
+        // Secret
+        'secretKey' => '1a846aa244183f92c29c66f7cae2f448fdb4018b'
     ],
 ];
